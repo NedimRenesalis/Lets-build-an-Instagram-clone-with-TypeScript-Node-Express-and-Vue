@@ -1,5 +1,5 @@
-import { join } from 'path';
-const app = express();
+import { join } from 'path'; // this is a Node native module. only using #join from `path`
+const app = express(); // the correct type declaration style.
 // view engine setup
 app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(join(__dirname, 'public')));
-Magic.use(app, { invokerPath: __dirname }); // need to use `invokerPath` because we are not in root dir.
+Magic.use(app, { invokerPath: __dirname }); // // need to use `invokerPath` because we are not in api's root dir.
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
     next(createError(404));
