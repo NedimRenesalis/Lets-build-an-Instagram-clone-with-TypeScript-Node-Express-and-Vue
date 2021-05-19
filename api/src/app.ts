@@ -1,14 +1,14 @@
 // @ts-ignore
-import createError = require('http-errors')
+import createError = require('http-errors') // change all `var` to import
 import express = require('express')
-import { join } from 'path'
+import { join } from 'path' // this is a Node native module. only using #join from `path`
 // @ts-ignore
 import cookieParser = require('cookie-parser')
 // @ts-ignore
 import logger = require ('morgan')
 // @ts-ignore
 import Magic = require('express-routemagic')
-const app: express.Application = express()
+const app: express.Application = express() // the correct type declaration style.
 // view engine setup
 app.set('views', join(__dirname, 'views'))
 app.set('view engine', 'hbs')
@@ -17,9 +17,9 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(join(__dirname, 'public')))
-Magic.use(app, { invokerPath: __dirname }) // need to use `invokerPath` because we are not in root dir.
+Magic.use(app, { invokerPath: __dirname }) // // need to use `invokerPath` because we are not in api's root dir.
 // catch 404 and forward to error handler
-app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
+app.use((req: express.Request, res: express.Response, next: express.NextFunction) => { // type declaration, and changed to use arrow function
     next(createError(404))
 })
 // error handler
